@@ -1,3 +1,5 @@
+Note: This page has been created with the wonderfull http://tmpvar.com/markdown.html 
+
 # Getting Started With MSP430 GNU Eclipse on Windows
 Do you like to play with TI MSP430 Launchpad and use open source software only? If you follow the instructions below you end up with a Hello-World-Program on your MSP430-Launchpad
 * developed on a host of type Windows 7 x64,
@@ -18,14 +20,18 @@ The tutorial assumes that you have the same.
 * The Setup should now start your shell.
 * In general, it is a standard shell you will find on many Linux and Unix systems out there. It might look old-school but the reason that this kind of interaction still exists is that it is proven to be effective if used accordingly. MSYS2 provides a package management system to the user.
 * First, update package database and your setup:
- $ pacman -Syu
+
+    $ pacman -Syu
+
 * Exit the shell because after these heavy updates the shell becomes unreliable when working w/o a clean re-start:
- $ exit
+
+    $ exit
 * Start the shell again via "C:\msys64\mingw64_shell.bat"
 * Install git (with "gui-stuff), make and gcc:
- $ pacman -S git mingw64/mingw-w64-x86_64-tk make mingw64/mingw-w64-x86_64-gcc
+
+    $ pacman -S git mingw64/mingw-w64-x86_64-tk make mingw64/mingw-w64-x86_64-gcc
 * Exit the shell:
- $ exit
+    $ exit
 
 General informations about MSYS2 and the package manager system "pacman": See http://sourceforge.net/p/msys2/wiki/MSYS2%20installation/
 
@@ -38,9 +44,11 @@ General informations about MSYS2 and the package manager system "pacman": See ht
 From now on we always start eclipse from within MinGW64's shell. This is nice because then all the tools (most important make) can be easily reached from within Eclipse.
 
 So start Eclipse by doing following
+
 * Start the shell via "C:\msys64\mingw64_shell.bat"
 * Call eclipse:
- $ /c/eclipse/eclipse.exe &
+
+    $ /c/eclipse/eclipse.exe &
  
 Mind the ampersand at the end of the command line. This causes eclipse running in the background as an forked process of the shell. You now still can work in the shell and also in Eclipse.
 
@@ -65,24 +73,27 @@ Because we download via gdb we do not need the TI flash tool. The Flashtool coul
 ## Step 6: Clone this repository
 * Start the shell via "C:\msys64\mingw64_shell.bat" 
 * Make sure that you're in your home directory (the home-directory is located under "C:\msys64\home\you"):
- $ cd 
+    $ cd 
 * Clone this repository:
- $ git clone https://github.com/basejumpa/HelloMSP430.git
+    $ git clone https://github.com/basejumpa/HelloMSP430.git
 
 ## Step 7: Run the example from command line:
 * Connect your Launchpad via USB to your computer. Driver-installation is not necessary here (in fact not before you're using the serial connection. We're using the JTAG-interface here, no driver-installation necessary. Thank's gdbproxy-team!)
 * Change to the project directory in the shell:
- $ cd
- $ cd HelloMSP430
+
+    $ cd
+    $ cd HelloMSP430
 * Make it:
- $ make
+
+    $ make
 * The expected result is headless:
 ** Compile, link, download, start in debugger, receiving in the debugger status messages written directly in the program of the program which just...
 ** toggles the two LEDs on the Launchpad for 50 times.
 
 ## Step 8: Run the example from Eclipse
 * Fork eclipse from the command line:
- $ /c/eclipse/eclipse.exe & 
+
+    $ /c/eclipse/eclipse.exe & 
 * Import the existing project inside Eclipse:
 ** Menubar/File/Import...
 ** Select Dialogbox/General/Existing Projects into Workspace, hit Next
