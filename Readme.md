@@ -44,23 +44,52 @@ So start Eclipse by doing following
  
 Mind the ampersand at the end of the command line. This causes eclipse running in the background as an forked process of the shell. You now still can work in the shell and also in Eclipse.
 
-## Step 3: Download and install MSP430 toolchain
+## Step 3: Install MSP430 toolchain
 Unfortunately MSP430 toolchain is not available as MSYS2-Package. So we cannot install it via pacman. No problem:
 * Download it from http://xpg.dk/files/File/msp430/msp430-toolchain-win-x86-3.0.zip
 * Unzip it (we did it so msp430-gcc.exe is available under "C:\msp430-toolchain-win-x86-3.0\bin\msp430-gcc.exe"
 
-## Step 4: Download and install GDB-Proxy
+## Step 4: Install GDB-Proxy
 
 Now we need also to install GDB-Proxy. MSPDebug is an open-source tool used to debug MSP430 devices over JTAG using GDB with the original MSP430.DLL from Texas Instruments.
 * Download the latest zip from http://gnutoolchains.com/msp430/gdbproxy/
 * In the zip there is the executable plus some dlls. We just copy all the files into the directory "C:\msp430-toolchain-win-x86-3.0\bin\", so that they reside along with the rest of the GDB-stuff.
 
-## Step 5: Download and install Flash-tool (skipped, because not necessary)
+## Step 5: Install Flash-tool
+Skip this because it is not necessary.
+
 http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430Flasher/latest/index_FDS.html
 
 Because we download via gdb we do not need the TI flash tool. The Flashtool could be downloaded from the vendor's (TI) page. But there registering is necessary, and so on. So we skip this for now.
 
-## Step 6: 
+## Step 6: Clone this repository
+* Start the shell via "C:\msys64\mingw64_shell.bat" 
+* Make sure that you're in your home directory (the home-directory is located under "C:\msys64\home\you"):
+ $ cd 
+* Clone this repository:
+ $ git clone https://github.com/basejumpa/HelloMSP430.git
 
+## Step 7: Run the example from command line:
+* Connect your Launchpad via USB to your computer. Driver-installation is not necessary here (in fact not before you're using the serial connection. We're using the JTAG-interface here, no driver-installation necessary. Thank's gdbproxy-team!)
+* Change to the project directory in the shell:
+ $ cd
+ $ cd HelloMSP430
+* Make it:
+ $ make
+* The expected result is headless:
+** Compile, link, download, start in debugger, receiving in the debugger status messages written directly in the program of the program which just...
+** toggles the two LEDs on the Launchpad for 50 times.
 
- 
+## Step 8: Run the example from Eclipse
+* Fork eclipse from the command line:
+ $ /c/eclipse/eclipse.exe & 
+* Import the existing project inside Eclipse:
+** Menubar/File/Import...
+** Select Dialogbox/General/Existing Projects into Workspace, hit Next
+** Select root directory (here: C:\msys64\home\mann\HelloMSP430 , my username is 'mann')
+** Hit Finish
+* On the left side in the view "Make Targets" double-click target "clean", then "test".
+* You see the same stuff in Eclipse's Console view as in Step 7 (run on command line).
+
+## Step 9: Interactively debug from within Eclipse.
+TODO.
