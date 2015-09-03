@@ -92,4 +92,54 @@ Because we download via gdb we do not need the TI flash tool. The Flashtool coul
 * You see the same stuff in Eclipse's Console view as in Step 7 (run on command line).
 
 ## Step 9: Interactively debug from within Eclipse.
-TODO.
+Install debugger extension:
+* Menubar/Help/Install New Software...
+* In DropDown "Work with:" choose "Mars - http://download.eclipse.org/releases/mars"
+* In tree-view choose "Mobile and Device Development/C/C++ GDB Hardware Debugging"
+* Hit Next, Next, Select you agree, Finish. Restart eclipse.
+
+
+The project you've imported already contains the settings, here's how I set them:
+* Right-click project "HelloMSP430" in view Project Explorer
+* ContextMenu/Properties (at bottom).
+* C/C++ Build/Settings: Enable both "Elf Parser" and also "PE Windows Parser"
+
+Now we setup that we can start the debugger and the debug-proxy from within Eclipse. These settings are stored in your Workspace, not in the project. Therefore you've to do following steps:
+* Menubar/Run/External Tools/External Tools Configurations...
+* Hit the button "New launch configuration"
+* Specify:
+** Name: gdbproxy
+** Location: C:\msp430-toolchain-win-x86-3.0\bin\msp430-gdbproxy.exe
+** Arguments: --keepalive
+* Button Apply, then button Close.
+
+* Menubar/Run/Debug Configurations...
+* In the treeview right-click "GDB Hardware Debugging"
+* ContextMenu/New
+* Specify:
+** Tab Main"
+*** Name: main
+*** "Disable aout build": Selected.
+*** Hit button Apply
+** Tab Debugger:
+*** GDB Command: C:\msp430-toolchain-win-x86-3.0\bin\msp430-gdb.exe
+*** Remote Target/Port number: 2000
+*** Hit button Apply
+*** Hit button Close
+
+Now all is set up. You debug by...
+* For the very first time after Eclipse-start you have to start the gdbproxy in the background by:
+** Menubar/Run/External Tools/1 gdbproxy
+* Open the file main.c in Eclipse. Double click onto the grey shoulder left to the line numbers in line 37 to set a breakpoint there.
+* Menubar/Run/Debug Configurations...
+** In Treeview, select entry "main" under "GDB Hardware Debugging"
+** Press button "debug".
+
+You're in the debugging session.
+
+
+
+Thanks to Xavi, Mike and dudmuck for their tutorials. I couldn't have written this w/o your tutorials:
+* http://www.indigresso.com/wiki/doku.php?id=opentag:tools:eclipse_mspgcc
+* http://hackaday.com/2011/02/24/debugging-msp430-using-eclipse/
+* https://openwsn.atlassian.net/wiki/display/OW/msp430gcc+on+Eclipse+with+mspgdb_proxy
