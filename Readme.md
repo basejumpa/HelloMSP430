@@ -73,8 +73,10 @@ Because we download via gdb we do not need the TI flash tool. The Flashtool coul
 ## Step 6: Clone this repository
 * Start the shell via "C:\msys64\mingw64_shell.bat" 
 * Make sure that you're in your home directory (the home-directory is located under "C:\msys64\home\you"):
+
     $ cd 
 * Clone this repository:
+
     $ git clone https://github.com/basejumpa/HelloMSP430.git
 
 ## Step 7: Run the example from command line:
@@ -86,7 +88,7 @@ Because we download via gdb we do not need the TI flash tool. The Flashtool coul
 * Make it:
 
     $ make
-* The expected result is headless:
+* All runs automatically:
 ** Compile, link, download, start in debugger, receiving in the debugger status messages written directly in the program of the program which just...
 ** toggles the two LEDs on the Launchpad for 50 times.
 
