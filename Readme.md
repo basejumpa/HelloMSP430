@@ -8,6 +8,7 @@ Do you like to play with TI MSP430 Launchpad and use open source software only? 
 * written with C,
 * compiled, linked, downloaded and debugged with the MSP430-GCC toolchain,
 
+
 ## Step 0: Get a MSP430 Launchpad
 I have a MSP-EXP430G2, see http://www.ti.com/ww/en/launchpad/launchpads-msp430-msp-exp430g2.html#tabs
 
